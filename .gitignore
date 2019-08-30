@@ -102,3 +102,17 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# output
+*.mp4
+*.tex
+*.aux
+*.dvi
+Tex/
+videos/
+video/
+tex/
+
+# editors
+.idea/
+.vscode/
