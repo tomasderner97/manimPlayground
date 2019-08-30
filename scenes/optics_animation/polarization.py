@@ -1,15 +1,14 @@
 import numpy as np
 from colour import Color
 from customutils2.manimutils.make_scene import make_scene, MEDIUM_QUALITY
-from manimlib.animation.composition import LaggedStart, AnimationGroup
+from manimlib.animation.composition import AnimationGroup
 from manimlib.animation.fading import FadeIn, FadeOut
 from manimlib.animation.growing import GrowFromCenter
 from manimlib.animation.transform import ApplyMethod
-from manimlib.animation.update import UpdateFromAlphaFunc, UpdateFromFunc
+from manimlib.animation.update import UpdateFromFunc
 from manimlib.constants import *
 from manimlib.mobject.coordinate_systems import Axes
-from manimlib.mobject.geometry import Vector, DashedLine, Line
-from manimlib.mobject.mobject import Mobject
+from manimlib.mobject.geometry import Vector
 from manimlib.mobject.types.vectorized_mobject import VGroup, VMobject
 from manimlib.scene.scene import Scene
 
