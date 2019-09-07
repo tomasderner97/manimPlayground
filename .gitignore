@@ -112,6 +112,7 @@ Tex/
 videos/
 video/
 tex/
+binary/
 
 # editors
 .idea/
