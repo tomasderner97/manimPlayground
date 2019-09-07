@@ -183,5 +183,5 @@ if __name__ == '__main__':
     make_scene(Polarization,
                quality=HIGH_QUALITY,
                frame_rate=24,
-               save_as_gif=True
+               save_as_gif=True,
                )

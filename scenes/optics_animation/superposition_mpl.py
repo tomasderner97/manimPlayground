@@ -35,7 +35,7 @@ def frame(t):
     upper.text(2.5, 2.8, f"$\\Phi = {t:.2f} \\pi$")
 
 
-    fig.savefig(f"matplotlib_out/{t:.2f}.png")
+    fig.savefig(f"binary/{t:.2f}.png")
     print(f"frame {t}")
 
 for i in range(50, 100):
