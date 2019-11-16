@@ -1,3 +1,4 @@
+from customutils2.manimutils.make_scene import make_scene
 from manimlib.imports import *
 
 from active_projects.diffyq.part2.fourier_series import FourierOfTrebleClef
@@ -1241,3 +1242,10 @@ class EndScreen(PatreonEndScreen):
             "Kurt Dicus",
         ],
     }
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(EndScreen,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))

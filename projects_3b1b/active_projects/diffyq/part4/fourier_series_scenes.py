@@ -1,3 +1,4 @@
+from customutils2.manimutils.make_scene import make_scene
 from manimlib.imports import *
 
 from active_projects.diffyq.part2.fourier_series import FourierOfTrebleClef
@@ -1877,6 +1878,8 @@ class DE4Thumbnail(ComplexFourierSeriesExample):
         self.add(approxs)
         self.add(labels)
 
+        self.wait()
+
         return
 
         self.add_vectors_circles_path()
@@ -1891,3 +1894,10 @@ class DE4Thumbnail(ComplexFourierSeriesExample):
         self.add(path, self.circles, self.vectors)
 
         self.update_mobjects(0)
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(DE4Thumbnail,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))

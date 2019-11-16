@@ -205,7 +205,7 @@ class BringTwoRodsTogether(Scene):
             step_size=self.step_size,
             discontinuities=[self.midpoint],
         )
-        graph.color_using_background_image("VerticalTempGradient")
+        # graph.color_using_background_image("VerticalTempGradient")
 
         self.graph = graph
 
@@ -1003,7 +1003,7 @@ class TalkThrough1DHeatGraph(ShowEvolvingTempGraphWithArrows, SpecialThreeDScene
             step_size=self.step_size,
         )
         graph.time = time
-        graph.color_using_background_image("VerticalTempGradient")
+        # graph.color_using_background_image("VerticalTempGradient")
         return graph
 
     def get_graph_time_change_animation(self, graph, new_time, **kwargs):
@@ -1156,7 +1156,7 @@ class ContrastXChangesToTChanges(TalkThrough1DHeatGraph):
             gs.point_from_proportion(slice_alpha)
             for gs in slices
         ])
-        graph.color_using_background_image("VerticalTempGradient")
+        # graph.color_using_background_image("VerticalTempGradient")
         graph.set_shade_in_3d(True)
 
         alpha_tracker = ValueTracker(0)
@@ -1601,7 +1601,7 @@ class DiscreteSetup(ShowEvolvingTempGraphWithArrows):
         points = self.get_points(time=0)
         graph = VMobject()
         graph.set_points_smoothly(points)
-        graph.color_using_background_image("VerticalTempGradient")
+        # graph.color_using_background_image("VerticalTempGradient")
 
         self.add(graph)
 
@@ -2252,7 +2252,7 @@ class DiscreteSetup(ShowEvolvingTempGraphWithArrows):
             )
             for point in points
         ])
-        dots.color_using_background_image("VerticalTempGradient")
+        # dots.color_using_background_image("VerticalTempGradient")
         return dots
 
     def get_dot_dashed_line(self, dot, index, color=False):
@@ -2269,10 +2269,10 @@ class DiscreteSetup(ShowEvolvingTempGraphWithArrows):
                 color=WHITE,
                 stroke_opacity=self.dashed_line_stroke_opacity,
             )
-            if color:
-                result.color_using_background_image(
-                    "VerticalTempGradient"
-                )
+            # if color:
+            #     result.color_using_background_image(
+            #         "VerticalTempGradient"
+            #     )
             return result
 
         return always_redraw(get_line)
@@ -2810,14 +2810,14 @@ class ShowNewtonsLawGraph(Scene):
         axes = self.axes
 
         water_dot = Dot()
-        water_dot.color_using_background_image("VerticalTempGradient")
+        # water_dot.color_using_background_image("VerticalTempGradient")
         water_dot.move_to(axes.c2p(0, self.initial_water_temp))
         room_line = DashedLine(
             axes.c2p(0, self.room_temp),
             axes.c2p(10, self.room_temp),
         )
         room_line.set_color(BLUE)
-        room_line.color_using_background_image("VerticalTempGradient")
+        # room_line.color_using_background_image("VerticalTempGradient")
 
         water_arrow = Vector(LEFT, color=WHITE)
         water_arrow.next_to(water_dot, RIGHT, SMALL_BUFF)
@@ -2859,7 +2859,7 @@ class ShowNewtonsLawGraph(Scene):
         graph = axes.get_graph(
             lambda t: rt + (t0 - rt) * np.exp(-k * t)
         )
-        graph.color_using_background_image("VerticalTempGradient")
+        # graph.color_using_background_image("VerticalTempGradient")
 
         def get_x():
             return axes.x_axis.p2n(water_dot.get_center())

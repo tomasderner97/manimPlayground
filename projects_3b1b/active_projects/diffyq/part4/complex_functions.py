@@ -1,3 +1,4 @@
+from customutils2.manimutils.make_scene import make_scene
 from manimlib.imports import *
 
 
@@ -710,3 +711,10 @@ class TRangingFrom0To1(SimpleComplexExponentExample):
                 sm.stretch(1 / 0.9, 0)
                 sm.set_stroke(width=0)
         return result
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(TRangingFrom0To1,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))

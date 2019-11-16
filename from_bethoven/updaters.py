@@ -454,6 +454,4 @@ class SuccessionExample3(Scene):
 
 
 if __name__ == '__main__':
-    make_scene(UpdateCurve,
-               video_dir="../video",
-               tex_dir="../tex")
+    make_scene(SuccessionExample3)

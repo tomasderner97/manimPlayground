@@ -173,3 +173,10 @@ class SoWeGotNowhere(TeacherStudentsScene):
             look_at_arg=self.screen
         )
         self.wait(3)
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(SoWeGotNowhere,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))

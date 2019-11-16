@@ -1,4 +1,5 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+from customutils2.manimutils.make_scene import make_scene
 from manimlib.imports import *
 
 
@@ -701,7 +702,8 @@ class StartingCalc101(PiCreatureScene):
         t_tracker = ValueTracker(0)
         group = VGroup(spring, weight)
         group.continual_animations = [
-            t_tracker.add_udpater(
+            t_tracker
+                .add_udpater(
                 lambda tracker, dt: tracker.set_value(
                     tracker.get_value() + dt
                 )
@@ -1213,7 +1215,7 @@ class StandardDerivativeVisual(GraphScene):
         slope_decimal.add_updater(
             lambda d: d.set_value(slope_line.get_slope())
         )
-        slope_decimal.add_upater(
+        slope_decimal.add_updater(
             lambda d: d.next_to(
                 deriv_label, RIGHT, SMALL_BUFF
             ).shift(0.2 * SMALL_BUFF * DOWN)
@@ -3772,3 +3774,10 @@ class Thumbnail(AnalyzeFunctionWithTransformations):
         cross.set_stroke(width=40)
 
         # self.add(cross)
+
+
+if __name__ == '__main__':
+    make_scene(StandardDerivativeVisual,
+               video_dir="../../video",
+               tex_dir="../../tex",
+               )

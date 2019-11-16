@@ -22,7 +22,7 @@ class TemperatureGraphScene(SpecialThreeDScene):
         "default_graph_style": {
             "stroke_width": 2,
             "stroke_color": WHITE,
-            "background_image_file": "VerticalTempGradient",
+            # "background_image_file": "VerticalTempGradient",
         },
         "default_surface_config": {
             "fill_opacity": 0.1,
@@ -222,7 +222,7 @@ class SimpleCosExpGraph(TemperatureGraphScene):
         cos_graph.add_updater(
             lambda m: m.become(self.get_time_slice_graph(
                 axes,
-                lambda x: self.cos_exp(x, get_t()),
+                lambda x, _: self.cos_exp(x, get_t()),
                 t=get_t()
             ))
         )
@@ -255,7 +255,7 @@ class SimpleCosExpGraph(TemperatureGraphScene):
 
     #
     def cos_exp(self, x, t, A=2, omega=1.5, k=0.1):
-        return A * np.cos(omega * x) * np.exp(-k * (omega**2) * t)
+        return A * np.cos(omega * x) * np.exp(-k * (omega ** 2) * t)
 
     def get_cos_graph(self, axes, **config):
         return self.get_initial_state_graph(
@@ -462,7 +462,7 @@ class BreakDownAFunction(SimpleCosExpGraph):
                 lambda x, t: np.prod([
                     A,
                     np.cos(n * x / 2),
-                    np.exp(-k * (n / 2)**2 * t)
+                    np.exp(-k * (n / 2) ** 2 * t)
                 ])
             )
             for n, axes, A in zip(
@@ -477,7 +477,7 @@ class BreakDownAFunction(SimpleCosExpGraph):
                 np.prod([
                     A,
                     np.cos(n * x / 2),
-                    np.exp(-k * (n / 2)**2 * t)
+                    np.exp(-k * (n / 2) ** 2 * t)
                 ])
                 for n, A in zip(
                     it.count(),
@@ -705,7 +705,7 @@ class OceanOfPossibilities(TemperatureGraphScene):
             return np.sum([
                 np.prod([
                     A * np.cos(omega * x),
-                    np.exp(-k * omega**2 * t)
+                    np.exp(-k * omega ** 2 * t)
                 ])
                 for A, omega in zip(get_As(), omegas)
             ])
@@ -853,6 +853,7 @@ class OceanOfPossibilities(TemperatureGraphScene):
                 m.set_value(
                     2 * A * np.sin(rate * m.total_time + PI / 6)
                 )
+
             return update
 
         rates = [0, 0.2] + [
@@ -1659,6 +1660,8 @@ class StraightLine3DGraph(TemperatureGraphScene):
         return self.c * x
 
 
+# stopped here
+
 class SimulateLinearGraph(SimulateRealSineCurve):
     CONFIG = {
         "axes_config": {
@@ -1775,7 +1778,6 @@ class FlatEdgesContinuousEvolution(ShowEvolvingTempGraphWithArrows):
         self.let_play()
 
     def add_boundary_lines(self):
-
         lines = VGroup(*[
             Line(LEFT, RIGHT)
             for x in range(2)
@@ -2449,7 +2451,7 @@ class ManipulateSinExpSurface(TemperatureGraphScene):
         alpha = self.alpha
         return op.mul(
             np.cos(omega * (x + phi)),
-            np.exp(-alpha * (omega**2) * t)
+            np.exp(-alpha * (omega ** 2) * t)
         )
 
     def get_ddx_computation_group(self, f, df, ddf):
@@ -2571,7 +2573,8 @@ class ShowHarmonics(SimulateRealSineCurve):
                 x_max=self.graph_x_max,
                 step_size=self.step_size,
                 discontinuities=[5],
-            ).color_using_background_image("VerticalTempGradient")
+            )
+            # ).color_using_background_image("VerticalTempGradient")
         )
 
         self.add(graph)
@@ -2761,8 +2764,8 @@ class ShowHarmonicSurfaces(ManipulateSinExpSurface):
         result = TexMobject(
             "\\cos\\left(",
             n_str, "(", "\\pi / L", ")", "{x}"
-            "\\right)"
-            "e^{-\\alpha (", n_str, "\\pi / L", ")^2",
+                                         "\\right)"
+                                         "e^{-\\alpha (", n_str, "\\pi / L", ")^2",
             "{t}}",
             tex_to_color_map={
                 "{x}": GREEN,
@@ -2828,3 +2831,10 @@ class Thumbnail(ShowHarmonicSurfaces):
         self.update_mobjects(0)
         self.surface.set_stroke(width=0.1)
         self.surface.set_fill(opacity=0.2)
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(StraightLine3DGraph,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))

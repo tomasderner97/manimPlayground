@@ -191,7 +191,7 @@ class ShowNewRuleAtDiscreteBoundary(DiscreteSetup):
 
     def get_rod_pieces(self, dots):
         axis = self.axes.x_axis
-        factor = 1 - np.exp(-(0.8 / self.step_size)**2)
+        factor = 1 - np.exp(-(0.8 / self.step_size) ** 2)
         width = factor * self.step_size
 
         pieces = VGroup()
@@ -217,7 +217,7 @@ class ShowNewRuleAtDiscreteBoundary(DiscreteSetup):
             x0, x1, x2 = [p[0] for p in points]
             dx = x1 - x0
             y0, y1, y2 = [p[1] for p in points]
-            
+
             self.update_dot(
                 dot=ds[1],
                 dt=dt,
@@ -301,3 +301,10 @@ class FlatEdgesForDiscreteEvolutionTinySteps(FlatEdgesForDiscreteEvolution):
             "stroke_opacity": 0.5,
         }
     }
+
+
+if __name__ == '__main__':
+    ROOT_PATH = r"C:\Users\tomas\Repositories\manimPlayground"
+    make_scene(DiscreteEvolutionPoint1,
+               video_dir=os.path.join(ROOT_PATH, "video"),
+               tex_dir=os.path.join(ROOT_PATH, "tex"))
